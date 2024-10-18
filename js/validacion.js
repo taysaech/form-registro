@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const email = document.getElementById('email');
     const password1 = document.getElementById('password1');
     const password2 = document.getElementById('password2');
+    const modal=document.getElementById('terminos');
 
     // Validación para el campo nombre
     name.addEventListener('input', function() {
@@ -113,3 +114,30 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('myForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Previene el envío del formulario
 });
+
+
+const terminos = document.getElementById('terminos');
+const errorText = document.getElementById('errorText');
+const modalButton = document.getElementById('modalButton');
+const submitButton = document.getElementById('submitButton');
+
+// Función para verificar si los términos fueron aceptados
+function checkTerms() {
+    if (!checkboxModal.checked) {
+      errorText.classList.remove('d-none');        
+      modalButton.classList.add('error');          
+      return false;                                
+    } else {
+      // Ocultar el error si el checkbox está marcado
+      errorText.classList.add('d-none');           
+      modalButton.classList.remove('error');       
+      return true;                                
+  }
+  
+  submitButton.addEventListener('click', function(event) {
+    // Verificar si los términos fueron aceptados
+    if (!checkTerms()) {
+      event.preventDefault();
+    }
+  })
+};

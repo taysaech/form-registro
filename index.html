@@ -12,16 +12,16 @@
 
 <body class="bg-light">
 
-  <div class="container" id="myForm" novalidate>
+  <div class="container" id="myForm" >
     <main>
-      <form action="#" method="get" class="row mt-4">
+      <form action="#" method="get" class="row mt-4" novalidate>
         <div class="col">
           <h1 class="mb-3">Registro</h1>
           <hr class="my-4">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control"id="nombre" required>
+              <input type="text" class="form-control" id="nombre" required>
               <div class="invalid-feedback">Debe ingresar un nombre.</div>
             </div>
 
@@ -60,12 +60,13 @@
             </div>
 
             <div class="col-sm-12">
-              <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal"
-                data-bs-target="#modalTerminos" required>Términos del servicio</button>
+              <button type="button" id="modalButton" class="btn btn-link ps-0" data-bs-toggle="modal"
+              data-bs-target="#modalTerminos">Términos del servicio</button>
+             <span id="errorText" class="text-danger d-none">Debes aceptar los términos del servicio.</span>
             </div>
 
 
-            <button class="btn btn-primary" type="submit">Registrarme</button>
+            <button class="btn btn-primary" id="submitButton" type="submit">Registrarme</button>
 
 
           </div>
@@ -96,11 +97,8 @@
         </div>
         <div class="modal-footer">
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="terminos" required>
+            <input type="checkbox" class="form-check-input"  id="terminos" required>
             <label class="form-check-label" for="terminos">Acepto los términos y condiciones del servicio.</label>
-            <div id="feedback-terminos" class="invalid-feedback">
-              Debes aceptar los terminos del servicio.
-          </div>
           </div>
         </div>
       </div>

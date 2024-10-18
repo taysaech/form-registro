@@ -11,3 +11,10 @@ input:valid {
   background-color: rgb(254, 254, 254);
   border: 2px solid green;
 }
+
+.text-danger {
+  color: red;
+}
+.d-none {
+  display: none;
+}
