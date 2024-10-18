@@ -96,6 +96,17 @@ document.addEventListener('DOMContentLoaded', function() {
             password2.classList.remove('is-valid');
         }
     });
+
+     // Validación para el modal
+     modal.addEventListener('input', function() {
+        if (modal.checkValidity()) {
+        modal.classList.add('is-valid');
+        modal.classList.remove('is-invalid');
+    } else {
+        modal.classList.add('is-invalid');
+        modal.classList.remove('is-valid');
+    }
+   });
 });
 
 // Manejador del evento submit para prevenir el envío
