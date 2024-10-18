@@ -1,0 +1,13 @@
+.container {
+  max-width: 960px;
+}
+
+input:invalid {
+  border: 2px solid red;
+  background-color: rgb(254, 254, 254);
+}
+
+input:valid {
+  background-color: rgb(254, 254, 254);
+  border: 2px solid green;
+}
