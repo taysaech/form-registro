@@ -141,3 +141,15 @@ function checkTerms() {
     }
   })
 };
+
+document.getElementById("submitButton").addEventListener("click", function(event) {
+  const checkbox = document.getElementById("terminos");
+  const errorText = document.getElementById("errorText");
+
+  if (!checkbox.checked) {
+    event.preventDefault(); // Evita que se envíe el formulario
+    errorText.classList.remove("d-none"); // Muestra el mensaje de error
+  } else {
+    errorText.classList.add("d-none"); // Oculta el mensaje de error
+  }
+});
