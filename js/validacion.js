@@ -133,6 +133,7 @@ function checkTerms() {
       modalButton.classList.remove('error');       
       return true;                                
   }
+};
   
   submitButton.addEventListener('click', function(event) {
     // Verificar si los términos fueron aceptados
@@ -140,7 +141,6 @@ function checkTerms() {
       event.preventDefault();
     }
   })
-};
 
 document.getElementById("submitButton").addEventListener("click", function(event) {
   const checkbox = document.getElementById("terminos");
