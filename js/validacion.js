@@ -170,35 +170,32 @@ const errorText = document.getElementById('errorText');
 const modalButton = document.getElementById('modalButton');
 const submitButton = document.getElementById('submitButton');
 
-// Función para verificar si los términos fueron aceptados
+
+// Función para verificar el estado del checkbox y cambiar el color del texto
 function checkTerms() {
-    if (!checkboxModal.checked) {
-      errorText.classList.remove('d-none');        
-      modalButton.classList.add('error');          
-      return false;                                
-    } else {
-      // Ocultar el error si el checkbox está marcado
-      errorText.classList.add('d-none');           
-      modalButton.classList.remove('error');       
-      return true;                                
-  }
-};
-  
-  submitButton.addEventListener('click', function(event) {
-    // Verificar si los términos fueron aceptados
-    if (!checkTerms()) {
-      event.preventDefault();
-    }
-  })
-
-document.getElementById("submitButton").addEventListener("click", function(event) {
-  const checkbox = document.getElementById("terminos");
-  const errorText = document.getElementById("errorText");
-
-  if (!checkbox.checked) {
-    event.preventDefault(); // Evita que se envíe el formulario
-    errorText.classList.remove("d-none"); // Muestra el mensaje de error
+  if (terminos.checked) {
+    // Si está marcado, cambiar el texto a verde
+    modalButton.style.color = 'green';
+    errorText.classList.add('d-none'); // Oculta el mensaje de error
   } else {
-    errorText.classList.add("d-none"); // Oculta el mensaje de error
+    // Si no está marcado, cambiar el texto a rojo
+    modalButton.style.color = 'red';
+    errorText.classList.remove('d-none'); // Muestra el mensaje de error
+  }
+}
+
+// Escucha el cambio en el checkbox
+terminos.addEventListener('change', checkTerms);
+
+// Validación al hacer clic en "Registrarme"
+submitButton.addEventListener('click', function(event) {
+  if (!terminos.checked) {
+    // Si no se han aceptado los términos, previene el envío y muestra el error
+    event.preventDefault();
+    errorText.classList.remove('d-none');
+    modalButton.style.color = 'red'; // Asegurar que el texto esté en rojo
   }
 });
+
+
+
