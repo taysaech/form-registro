@@ -32,10 +32,11 @@
       alert("Formulario enviado exitosamente");
     }
   });
-  
+ 
 
   // Agrega los event listeners al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
+    const submit = document.getElementById('submitButton');
     const name = document.getElementById('nombre');
     const lastname = document.getElementById('apellido');
     const email = document.getElementById('email');
@@ -108,6 +109,54 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.remove('is-valid');
     }
    });
+
+   // ES LA COMPROBACIÓN PARA QUE CUANDO SE LE DA CLICK A "REGISTRARME" Y LOS CAMPOS ESTÉN VACÍOS, LOS MARQUE TODOS EN ROJO
+   submit.addEventListener('click', function(event) {
+    const campos = [name, lastname, email, password1, password2];
+    const emailFormato = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    let esValido = true; 
+
+    campos.forEach(campo => {
+        if (campo.value === "") {
+            campo.classList.add('is-invalid');
+            esValido = false; 
+        } else {
+            campo.classList.remove('is-invalid');
+        }
+    });
+
+    // Validacion para campo email
+    if (!emailFormato.test(email.value)) {
+        email.classList.add('is-invalid');
+        esValido = false; 
+    } else {
+        email.classList.remove('is-invalid');
+    }
+
+    const textoBoton = document.getElementById('modalButton');
+
+    if (!modal.checked) {
+      textoBoton.style.color = '';
+      textoBoton.classList.add('textito');
+      textoBoton.classList.remove('textitovalido');
+      modal.classList.add('is-invalid');
+      modal.classList.remove('is-valid');
+      esValido = false; 
+    } else {
+      textoBoton.style.color = '';
+      textoBoton.classList.add('textitovalido');
+      textoBoton.classList.remove('textito');
+      modal.classList.add('is-valid');
+      modal.classList.remove('is-invalid');
+  }
+
+    if (!esValido) {
+        event.preventDefault(); 
+    }
+});
+// TERMINA ACÁ
+
 });
 
 // Manejador del evento submit para prevenir el envío

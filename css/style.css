@@ -4,6 +4,7 @@
 
 input:focus:invalid {
   border: 2px solid red;
+  color: red;
 }
 
 input:focus:valid {
@@ -15,4 +16,16 @@ input:focus:valid {
 }
 .d-none {
   display: none;
+}
+
+.textito{
+  color: red;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.textitovalido{
+  color: green;
+  font-weight: 400;
+  text-decoration: underline;
 }
